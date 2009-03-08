@@ -10,6 +10,6 @@ test_requires 'ok';
 test_requires 'Test::MockObject';
 
 requires 'Catalyst';
-requires 'Class::C3';
+requires 'Class::C3' => '0.20';
 
 WriteAll();
