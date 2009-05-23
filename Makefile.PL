@@ -12,4 +12,6 @@ test_requires 'Test::MockObject';
 requires 'Catalyst';
 requires 'Class::C3' => '0.20';
 
+resources repository => 'http://dev.catalyst.perl.org/repos/Catalyst/Catalyst-Plugin-Devel-ModuleVersions/1.000/trunk/';
+
 WriteAll();
