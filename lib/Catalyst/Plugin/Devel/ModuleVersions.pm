@@ -1,31 +1,12 @@
 package Catalyst::Plugin::Devel::ModuleVersions;
+# ABSTRACT: Dump your loaded module versions to the debug-screen
+
 use strict;
 use warnings;
 
-use Class::C3;
+use MRO::Compat;
+use mro 'c3';
 
-our $VERSION = '0.0001';
-
-=head1 NAME
-
-Catalyst::Plugin::Devel::ModuleVersions - 
-
-=cut
-
-
-=head1 INTERFACE
-
-=head2 EXTENDED METHODS
-
-=head3 dump_these
-
-Uses Class::C3 to extend the catalyst dump_these, and add some more information
-at the end of the debug screen, containing a list of strings that each is
-"Module::Name VERSION", ala:
-
-    "Catalyst::Plugin::Devel::ModuleVersions 0.0001"
-
-=cut
 
 sub dump_these {
     my $c = shift; 
@@ -46,14 +27,20 @@ sub dump_these {
     ]); 
 }
 
-=head1 AUTHOR
-
-Andreas Marienborg C<<andremar@cpan.org>>
-
-=head1 LICENCE
-
-This library is free software, you can redistribute it and/or modify it
-under the same terms as Perl itself.
-
 
 1;
+
+
+=head1 INTERFACE
+
+=head2 EXTENDED METHODS
+
+=head3 dump_these
+
+Uses Class::C3 to extend the catalyst dump_these, and add some more information
+at the end of the debug screen, containing a list of strings that each is
+"Module::Name VERSION", ala:
+
+    "Catalyst::Plugin::Devel::ModuleVersions 0.0001"
+
+=cut

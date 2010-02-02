@@ -23,5 +23,9 @@ my $mech = Test::WWW::Mechanize::Catalyst->new;
 $mech->{catalyst_debug} = 1;
 $mech->get('http://localhost/', 'get main page');
 $mech->content_like(qr/Loaded Modules/i, 'see if it has our text');
-$mech->content_like(qr/Catalyst::Plugin::Devel::ModuleVersions $v/, 
-    "see if we loaded the right version of us")
+
+SKIP: {
+    skip "No \$VERSION defined for our module, probably running with prove. Try dzil test to make sure it works", 1 unless $v;
+    $mech->content_like(qr/Catalyst::Plugin::Devel::ModuleVersions $v/, 
+        "see if we loaded the right version of us") or diag($mech->content);
+}
